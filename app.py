@@ -22,4 +22,4 @@ html_path = os.path.join(os.path.dirname(__file__), "finfit.html")
 with open(html_path, "r", encoding="utf-8") as f:
     html_content = f.read()
 
-components.html(html_content, height=900, scrolling=False)
+components.html(HTML, height=950, scrolling=True)
