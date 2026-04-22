@@ -1,5 +1,6 @@
 import streamlit as st
 import streamlit.components.v1 as components
+import os  # 추가
 
 st.set_page_config(
     page_title="핀핏 FinFit",
@@ -8,7 +9,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# 여백 최소화 스타일
 st.markdown("""
 <style>
     #MainMenu, header, footer { visibility: hidden; }
@@ -17,9 +17,9 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# HTML 파일 읽기
-with open("finfit.html", "r", encoding="utf-8") as f:
+# ✅ 이 부분만 수정 — 절대 경로로 변경
+html_path = os.path.join(os.path.dirname(__file__), "finfit.html")
+with open(html_path, "r", encoding="utf-8") as f:
     html_content = f.read()
 
-# 전체 화면으로 렌더링
 components.html(html_content, height=900, scrolling=False)
