@@ -11,8 +11,9 @@ st.set_page_config(
 st.markdown("""
 <style>
     #MainMenu, header, footer { visibility: hidden; }
-    .block-container { padding: 0 !important; max-width: 100% !important; }
+    .block-container { padding: 0 !important; max-width: 430px !important; }
     section[data-testid="stMain"] > div { padding: 0 !important; }
+    iframe { display: block; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -24,8 +25,8 @@ HTML = """<!DOCTYPE html>
 <title>핀핏 FinFit</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:linear-gradient(135deg,#e8edf8,#dde3f5);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:24px 16px;}
-.phone{width:390px;max-width:100%;background:#f0f4ff;border-radius:40px;overflow:hidden;box-shadow:0 20px 60px rgba(59,91,219,.25);min-height:844px;display:flex;flex-direction:column;position:relative;}
+body{font-family:-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:linear-gradient(135deg,#e8edf8,#dde3f5);display:flex;justify-content:center;align-items:flex-start;min-height:100vh;padding:0;margin:0;}
+.phone{width:390px;max-width:100%;background:#f0f4ff;border-radius:0;overflow:hidden;box-shadow:none;height:100vh;min-height:844px;display:flex;flex-direction:column;position:relative;}
 .status-bar{background:#1a2a6c;height:12px;flex-shrink:0;}
 .screen{display:none;flex-direction:column;flex:1;overflow:hidden;}
 .screen.active{display:flex;}
@@ -1013,16 +1014,7 @@ window.onload=function(){
   updateSubCat();
 };
 </script>
-
-<script>
-    function syncHeight() {
-        const h = document.body.scrollHeight;
-        window.parent.postMessage({type:'streamlit:setFrameHeight', height:h}, '*');
-    }
-    window.onload = syncHeight;
-    new MutationObserver(syncHeight).observe(document.body, {childList:true, subtree:true});
-</script>
 </body>
 </html>"""
 
-components.html(HTML, height=1050, scrolling=False)
+components.html(HTML, height=844, scrolling=False)
